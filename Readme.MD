@@ -33,3 +33,7 @@ This application is showing statistics from several football stats APIs.
 - https://www.jokecamp.com/blog/guide-to-football-and-soccer-data-and-apis
 - http://www.footytube.com/openfooty
 - http://www.football-data.org/index
+
+
+----
+Mariusz Zalewski
