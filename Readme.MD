@@ -34,7 +34,8 @@ This application is showing statistics from several football stats APIs.
 - http://www.footytube.com/openfooty
 - http://www.football-data.org/index
 
+---
 
-----
-Mariusz Zalewski
+- Mariusz Zalewski
 - Lukasz Wysocki <lukwys>
+- Damian Rutkowski <Txwxcc>
