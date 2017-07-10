@@ -37,3 +37,4 @@ This application is showing statistics from several football stats APIs.
 
 ----
 Mariusz Zalewski
+- Lukasz Wysocki <lukwys>
