@@ -11,33 +11,45 @@
 <body>
     <div class="main">
         <div class="select-container">
-            <label for="league">Leagues</label>
-            <input list="leagues" name="league" id="league" />
-            <datalist id="leagues">
+            <div class="item">
+                <label for="league">
+                    <p>Leagues</p>
+                </label>
+                <input list="leagues" name="league" id="league" />
+                <datalist id="leagues">
                 <option value="1">
                 <option value="2">
                 <option value="3">
                 <option value="4">
                 <option value="5">
-            </datalist>
-            <label for="team">Teams</label>
-            <input list="teams" name="team" id="team" />
-            <datalist id="teams">
-                <option value="1">
-                <option value="2">
-                <option value="3">
-                <option value="4">
-                <option value="5">
-            </datalist>
-            <label for="season">Seasons</label>
-            <input list="seasons" name="season" id="season" />
-            <datalist id="seasons">
-                <option value="1">
-                <option value="2">
-                <option value="3">
-                <option value="4">
-                <option value="5">
-            </datalist>
+                </datalist>
+            </div>
+            <div class="item">
+                <label for="team">
+                    <p>Teams</p>
+                </label>
+                <input list="teams" name="team" id="team" />
+                <datalist id="teams">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                    <option value="5">
+                </datalist>
+            </div>
+            <div class="item">
+                <label for="season">
+                    <p>Seasons</p>
+                </label>
+                <input list="seasons" name="season" id="season" />
+                <datalist id="seasons">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                    <option value="5">
+                </datalist>
+            </div>
         </div>
         <div class="search-results">
             <table>
