@@ -11,47 +11,23 @@
 <body>
     <div class="select-container">
         <label for="league">Leagues</label>
-        <input list="leagues" name="league" id="league" />
-        <datalist id="leagues">
-            <option value="1">
-            <option value="2">
-            <option value="3">
-            <option value="4">
-            <option value="5">
-        </datalist>
+        <input list="leagues" name="league" id="league" placeholder="Loading data" data-select--league disabled />
+
+        <datalist id="leagues" data-select--league-out></datalist>
+
         <label for="team">Teams</label>
-        <input list="teams" name="team" id="team" />
-        <datalist id="teams">
-            <option value="1">
-            <option value="2">
-            <option value="3">
-            <option value="4">
-            <option value="5">
-        </datalist>
+        <input list="teams" name="team" id="team" placeholder="Select league before" data-select--team disabled />
+
+        <datalist id="teams" data-select--team-out></datalist>
+
         <label for="season">Seasons</label>
-        <input list="seasons" name="season" id="season" />
-        <datalist id="seasons">
-            <option value="1">
-            <option value="2">
-            <option value="3">
-            <option value="4">
-            <option value="5">
-        </datalist>
+        <input list="seasons" name="season" id="season" placeholder="Select team before" data-select--season disabled />
+
+        <datalist id="seasons" data-select--season-out></datalist>
     </div>
     <div class="search-results">
         <table>
-            <tr>
-                <td>Date</td>
-                <td>Host</td>
-                <td>Guest</td>
-                <td>Match Result</td>
-            </tr>
-            <tr>
-                <td>12/5/17</td>
-                <td>Team H</td>
-                <td>Team G</td>
-                <td>0-5</td>
-            </tr>
+            <tbody data-select--search-result></tbody>
         </table>
     </div>
     <!-- added whitespaces ver. 2.0-->
