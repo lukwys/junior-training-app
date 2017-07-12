@@ -1,25 +1,32 @@
+$main-font: sans-serif;
+$bacground-green: #dff0d8;
+
+
 body {
 	font-family: sans-serif;
+
 }
 
 
 .main {
-
 	background-color: #dff0d8;
 	width: 1200px;
 	margin: 20px auto;
 	padding: 20px;
-
+	
 	.select-container {
 		width: 800px;
 		margin: 20px auto;
 		padding: 10px;
 	}
+
 	.search-results {
 		width: 400px;
 		margin: auto;
+
 		td {
 			padding: 10px;
+			text-align: center;
 		}
 	}
 }
