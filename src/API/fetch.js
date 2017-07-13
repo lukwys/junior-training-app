@@ -1,6 +1,5 @@
-function loadLeauge(token){
-    //var token = "63e07dbf62ac463d9aa94a83443512ec"
-    request = new Request('http://api.football-data.org/v1/competitions', {
+export default function loadLeauge(token, url){
+    const request = new Request(url, {
         method: 'GET',
         headers: {
             "X-Auth-Token" : token
@@ -8,11 +7,8 @@ function loadLeauge(token){
     });
     
     fetch(request)
-    .then(response => {
-        return response.json();
-    })
-    .then(j => {
-        j.map(i => console.log(i.caption));
-        }
-    );
+      .then(response => response.json())
+      .then(j => {
+          const list = j.map(i => i.caption);
+      });
 }
