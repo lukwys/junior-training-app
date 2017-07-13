@@ -6,9 +6,6 @@ export default function loadLeauge(token, url){
         }
     });
     
-    fetch(request)
+    return fetch(request)
       .then(response => response.json())
-      .then(j => {
-          const list = j.map(i => i.caption);
-      });
 }
