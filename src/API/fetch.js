@@ -1,16 +1,18 @@
-function loadLeauge(){
-    const url = 'http://api.football-data.org/v1/competitions';
-    var request = new Request(url, {
+function loadLeauge(token){
+    //var token = "63e07dbf62ac463d9aa94a83443512ec"
+    request = new Request('http://api.football-data.org/v1/competitions', {
         method: 'GET',
         headers: {
-            "X-Auth-Token" : "63e07dbf62ac463d9aa94a83443512ec"
+            "X-Auth-Token" : token
         }
     });
-    fetch(request).then(function(response){
+    
+    fetch(request)
+    .then(response => {
         return response.json();
-    }).then(function(j){
-        for(var i = 0; i < j.length;  i++){
-            console.log(j[i].caption);
+    })
+    .then(j => {
+        j.map(i => console.log(i.caption));
         }
-    });
+    );
 }
