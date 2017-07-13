@@ -10,7 +10,7 @@ $btn-orange: #f0ad4e;
 $btn-red: #d9534f;
 $btn-lblue: #5bc0de;
 body {
-	font-size: 1.5em;
+    font-size: 1.2em;
     font-family: $main-font;
 }
 
@@ -29,8 +29,11 @@ body {
     margin: 20px auto;
     padding: 10px;
     .item {
-        width: 300px;
-        text-align:center;
+     	width: 300px;
+        text-align: center;
+        input {
+            font-size: .9em;
+        }
     }
 }
 
@@ -38,19 +41,20 @@ body {
     width: 380px;
     margin: auto;
     background-color: $pas-gray;
-    
     td {
-    	color: $btn-blue;
+        color: $btn-blue;
         padding: 10px;
         text-align: center;
         border: 1px solid $btn-green;
-
+        border-radius: 3px
     }
 }
 
-@media only screen and (max-width: 415px) {
-	.search-results {
-    width: 100%;
-    }
-    
-}
+// @media only screen and (max-width: 535px) {
+//     table {
+//         width: 100%;
+//     }
+//     .search-results {
+//         width: 100%;
+//     }
+// }
