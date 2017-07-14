@@ -9,6 +9,7 @@ $btn-green: #5cb85c;
 $btn-orange: #f0ad4e;
 $btn-red: #d9534f;
 $btn-lblue: #5bc0de;
+
 body {
     font-size: 1.2em;
     font-family: $main-font;
@@ -28,9 +29,11 @@ body {
     width: 100%;
     margin: 20px auto;
     padding: 10px;
+
     .item {
      	width: 300px;
         text-align: center;
+
         input {
             font-size: .9em;
         }
@@ -41,6 +44,7 @@ body {
     width: 380px;
     margin: auto;
     background-color: $pas-gray;
+
     td {
         color: $btn-blue;
         padding: 10px;
