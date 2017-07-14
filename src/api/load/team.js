@@ -1,7 +1,12 @@
 export default function team(leagueId) {
-    // MOCK-UP for Handler/Select
-    // Remove during merge!
     return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(["Team 1A", "Team 2B", "Team 3C", "Team 4D", "Team 5E", "Team 6F"]), 700);
+        setTimeout(() => resolve([
+            { id: 1, name: "Team 1A" },
+            { id: 2, name: "Team 2B" },
+            { id: 3, name: "Team 3C" },
+            { id: 4, name: "Team 4D" },
+            { id: 5, name: "Team 5E" },
+            { id: 6, name: "Team 6F" }
+        ]), 700);
     })
 }

@@ -1,8 +1,11 @@
 export default {
     attrData: {
-        league: "data-select--league",
-        team: "data-select--team",
-        season: "data-select--season",
-        searchResult: "data-select--search-result",
+        input: "select--input",
+        league: ["league", "Leagues", "leagues"],
+        team: ["team", "Teams", "teams"],
+        season: ["season", "Seasons", "seasons"],
+        dataSource: "select--data-source",
+        container: "select--container",
+        searchResult: "select--search-result",
     }
 }

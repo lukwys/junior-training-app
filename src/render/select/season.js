@@ -1,7 +1,7 @@
-export default function team(teamList) {
+export default function season(seasonList) {
     const result = document.createElement("res");
 
-    teamList
+    seasonList
         .forEach(e => {
             const element = document.createElement("option");
             element.setAttribute("value", e.name);
