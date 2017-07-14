@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
+    <title>Statistics</title>
 </head>
 
 <body>
-    <div class="select-container">
-        <label for="league">Leagues</label>
-        <input list="leagues" name="league" id="league" placeholder="Loading data" data-select--league disabled />
-
-        <datalist id="leagues" data-select--league-out></datalist>
-
-        <label for="team">Teams</label>
-        <input list="teams" name="team" id="team" placeholder="Select league before" data-select--team disabled />
-
-        <datalist id="teams" data-select--team-out></datalist>
-
-        <label for="season">Seasons</label>
-        <input list="seasons" name="season" id="season" placeholder="Select team before" data-select--season disabled />
-
-        <datalist id="seasons" data-select--season-out></datalist>
+    <div class="main">
+        <div class="select-container">
+            <div class="item">
+                <label for="league">
+                    <p>Leagues</p>
+                </label>
+                <input list="leagues" name="league" id="league" placeholder="Loading data" data-select--league disabled />
+                <datalist id="leagues" data-select--league-out></datalist>
+            </div>
+            <div class="item">
+                <label for="team">
+                    <p>Teams</p>
+                </label>
+                <input list="teams" name="team" id="team" placeholder="Select league before" data-select--team disabled />
+                <datalist id="teams" data-select--team-out></datalist>
+            </div>
+            <div class="item">
+                <label for="season">
+                    <p>Seasons</p>
+                </label>
+                <input list="seasons" name="season" id="season" placeholder="Select team before" data-select--season disabled />
+                <datalist id="seasons" data-select--season-out></datalist>
+            </div>
+        </div>
+        <div class="search-results">
+            <table>
+              <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Host</th>
+                    <th>Guest</th>
+                    <th>Match Result</th>
+                </tr>
+              </thead>
+              <tbody data-select--search-result></tbody>
+            </table>
+        </div>
     </div>
-    <div class="search-results">
-        <table>
-            <tbody data-select--search-result></tbody>
-        </table>
-    </div>
-    <!-- added whitespaces ver. 2.0-->
-    <!-- camel case -->
-     <script src="dist/app.js"></script>
+    <script src="dist/app.js"></script>
 </body>
+
 </html>
