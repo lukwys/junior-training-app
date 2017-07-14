@@ -1,4 +1,5 @@
 import loadLeague from "./api/fetch"
+import "./css/style.scss";
 
 loadLeague("63e07dbf62ac463d9aa94a83443512ec", "http://api.football-data.org/v1/competitions")
   .then(j => {
@@ -7,5 +8,4 @@ loadLeague("63e07dbf62ac463d9aa94a83443512ec", "http://api.football-data.org/v1/
                console.log(list[i]);
            }
             return list;
-       });
-
+  });
