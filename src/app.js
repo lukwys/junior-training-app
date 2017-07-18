@@ -12,28 +12,18 @@ function bootstrap() {
     console.log("~ Init select");
 
     const attr = config.select.attrData;
-
     handler.source.select(attr.dataSource, attr.container, attr.searchResult, attr.input, {
-        league: {
+        league: { // TODO: After refactor api it will be: - league: attr.league,
             name: attr.league,
             load: api.load.league,
-            attach: attach.select.league,
-            handler: handler.select.league,
-            render: render.select.league
         },
         team: {
             name: attr.team,
             load: api.load.team,
-            attach: attach.select.team,
-            handler: handler.select.team,
-            render: render.select.team
         },
         season: {
             name: attr.season,
             load: api.load.season,
-            attach: attach.select.season,
-            handler: handler.select.season,
-            render: render.select.season
         }
     });
 }
