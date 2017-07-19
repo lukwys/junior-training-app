@@ -1,8 +1,7 @@
-export default function attachSelect(options, inputDataAttr, select) {
-    console.log(`[data-${inputDataAttr}-out="${select}"]`);
-    document.querySelector(`[data-${inputDataAttr}-out="${select}"]`).innerHTML = options.innerHTML;
+export default function attachSelect(options, select) {
+    document.querySelector(`[${select.outAttr}]`).innerHTML = options.join('');
 
-    const input = document.querySelector(`[data-${inputDataAttr}="${select}"]`);
+    const input = document.querySelector(`[${select.inAttr}]`);
     input.removeAttribute("disabled");
     input.removeAttribute("placeholder");
 }

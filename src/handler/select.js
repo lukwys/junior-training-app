@@ -1,8 +1,7 @@
-export default function handlerSelect(inputDataAttr, next) {
-    next.load(234)
-        .then(list => next.attach(
-            next.render(list),
-            inputDataAttr,
-            next.dataAttr
+export default function handlerSelect(params, nextElement) {
+    nextElement.load(params)
+        .then(list => nextElement.attach(
+            nextElement.render(list, nextElement.template),
+            nextElement
         ))
 }

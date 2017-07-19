@@ -1,2 +1,2 @@
-export default function searchResult() {
+export default function attachSearchResult() {
 }

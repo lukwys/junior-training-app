@@ -1,4 +1,4 @@
-export default function searchResult(leagueId, teamId, seasonId) {
+export default function apiLoadSearchResult() {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve({
             'Played': 0,

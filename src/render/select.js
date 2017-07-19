@@ -1,13 +1,19 @@
-export default function renderSelect(list) {
-    const result = document.createElement("res");
+export default function renderSelect(options, template) {
+    const result = [];
 
-    list.forEach(e => {
-        console.log(e);
-        const element = document.createElement("option");
-        element.setAttribute("value", e.name);
+    const replacements = {key: 'name'};
+    const getValue = function (tag, option) {
+        let val = '';
+        for (let key in replacements)
+            if (key === tag) {
+                val = option[replacements[key]];
+                break
+            }
+        return val;
+    };
 
-        result.appendChild(element)
-    });
+    options.forEach(option => result.push(template.replace(/{(\w+)}/g,
+        (match, tag) => getValue(tag, option))));
 
     return result
 }

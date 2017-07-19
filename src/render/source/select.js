@@ -1,20 +1,28 @@
-export default function select(inputDataAttr, inputList) {
-    const result = document.createElement("result");
+export default function renderSourceSelect(inputs, template) {
+    const result = [];
 
     let placeholder = "Loading data";
 
-    inputList
-        .forEach(e => {
-            const element = document.createElement("div");
-            element.setAttribute("class", "item");
+    const getValue = (tag, input) => {
+        let val;
+        switch (tag) {
+            case 'id': val = input.id; break;
+            case 'label': val = input.label; break;
+            case 'options': val = input.id + "-options"; break;
+            case 'placeholder': val = placeholder; break;
+            case 'attr_in': val = input.inAttr; break;
+            case 'attr_out': val = input.outAttr; break;
+            default: val = ''; break;
+        }
+        return val
+    };
 
-            element.innerHTML = `<label for="${e.name[0]}"><p>${e.name[1]}</p></label>` +
-                `<input list="${e.name[2]}" id="${e.name[0]}" placeholder="${placeholder}" data-${inputDataAttr}="${e.dataAttr}" disabled />` +
-                `<datalist id="${e.name[2]}" data-${inputDataAttr}-out="${e.dataAttr}"></datalist>`;
-            placeholder = `Select ${e.name[0]} before`;
+    inputs.forEach(input => {
+        result.push(template.replace(/{(\w+)}/g,
+            (match, tag) => getValue(tag, input)));
 
-            result.appendChild(element)
-        });
+        placeholder = `Select ${input.id} before`;
+    });
 
     return result
 }

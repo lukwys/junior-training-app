@@ -1,4 +1,4 @@
-export default function team(leagueId) {
+export default function apiLoadTeam() {
     return new Promise((resolve, reject) => {
         setTimeout(() => resolve([
             { id: 1, name: "Team 1A" },
