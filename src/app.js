@@ -36,6 +36,8 @@ function bootstrap() {
             render: render.select.season
         }
     });
-}
 
+    return document.getElementsByClassName("search-results")[0].appendChild(render.searchResult(api.searchResult()));
+
+}
 bootstrap();
