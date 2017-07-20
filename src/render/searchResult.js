@@ -1,22 +1,12 @@
-export default function searchResult(resultList) {
-    const result = document.createElement("results");
-
-    const headers = document.createElement("tr");
-    const values = document.createElement("tr");
+export default function renderSearchResult(resultList) {
+    const headers = [];
+    const values = [];
 
     for (let e in resultList) {
-        const th = document.createElement("th");
-        const td = document.createElement("td");
-
-        th.innerHTML = e;
-        td.innerHTML = resultList[e]
-
-        headers.appendChild(th);
-        values.appendChild(td);
+        headers.push(`<th>${e}</th>`);
+        values.push(`<td>${resultList[e]}</td>`);
     }
 
-    result.appendChild(headers);
-    result.appendChild(values);
-
-    return result;
+    return `<thead><tr>${headers.join('')}</tr></thead>` +
+        `<tbody><tr>${values.join('')}</tr></tbody>`
 }

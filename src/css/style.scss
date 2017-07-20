@@ -11,45 +11,45 @@ $btn-red: #d9534f;
 $btn-lblue: #5bc0de;
 
 body {
-    font-size: 1.2em;
-    font-family: $main-font;
+  font-size: 1.2em;
+  font-family: $main-font;
 }
 
 .main {
-    background-color: $pas-green;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 1000px;
+  background-color: $pas-green;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
 }
 
 .select-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    margin: 20px auto;
-    padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
 
-    .item {
-     	width: 300px;
-        text-align: center;
+  .item {
+    width: 300px;
+    text-align: center;
 
-        input {
-            font-size: .9em;
-        }
+    input {
+      font-size: .9em;
     }
+  }
 }
 
 .search-results {
-    width: 380px;
-    margin: auto;
-    background-color: $pas-gray;
+  width: 380px;
+  margin: auto;
+  background-color: $pas-gray;
 
-    td {
-        color: $btn-blue;
-        padding: 10px;
-        text-align: center;
-        border: 1px solid $btn-green;
-        border-radius: 3px
-    }
+  td {
+    color: $btn-blue;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid $btn-green;
+    border-radius: 3px
+  }
 }

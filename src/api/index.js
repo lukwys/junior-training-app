@@ -1,7 +1,6 @@
 import load from "./load"
-import searchResult from "./searchResult"
-import render from "./render"
+import sources from "./sources"
 
 export default {
-    load, searchResult, render
+    load, sources
 }

@@ -1,3 +1,4 @@
-export default function select(inputElements, containerDataAttr) {
-    document.querySelector(`[data-${containerDataAttr}]`).innerHTML = inputElements.innerHTML;
+export default function attachSourceSelect(inputList, containerAttr, searchResult) {
+    document.querySelector(`[${containerAttr}]`).innerHTML = inputList.join('');
+    document.querySelector(`[${searchResult}]`).innerHTML = '';
 }

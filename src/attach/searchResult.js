@@ -1,2 +1,3 @@
-export default function searchResult() {
+export default function attachSearchResult(table, select) {
+    document.querySelector(`[${select.outAttr}]`).innerHTML = table;
 }
