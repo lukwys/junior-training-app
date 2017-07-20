@@ -4,7 +4,7 @@ export default function league(leaguesList) {
     leaguesList
         .forEach(e => {
             const element = document.createElement("option");
-            element.setAttribute("value", e);
+            element.setAttribute("value", e.name);
             result.appendChild(element)
         });
 
