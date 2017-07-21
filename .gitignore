@@ -1,5 +1,7 @@
 .*
 !.gitignore
+!.eslintrc.json
+!.eslintignore
 
 *.log
 /dist/
