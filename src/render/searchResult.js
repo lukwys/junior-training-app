@@ -1,10 +1,10 @@
-export default function renderSearchResult(resultList) {
+export default function renderSearchResult(results) {
     const headers = [];
     const values = [];
 
-    for (let e in resultList) {
+    for (let e in results) {
         headers.push(`<th>${e}</th>`);
-        values.push(`<td>${resultList[e]}</td>`);
+        values.push(`<td>${results[e]}</td>`);
     }
 
     return `<thead><tr>${headers.join('')}</tr></thead>` +
