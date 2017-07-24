@@ -3,5 +3,5 @@ import source from './source';
 import searchResult from './searchResult';
 
 export default {
-  select, source, searchResult
+    select, source, searchResult
 };

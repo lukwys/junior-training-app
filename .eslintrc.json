@@ -1,13 +1,24 @@
 {
     "extends": "airbnb-base",
+    "env" : {
+        "browser" : true,
+        "node" : true
+    },
+    "globals" : {
+        "document" : false
+    },
     "rules" : {
+        "indent": ["error", 4],
         "linebreak-style" : ["error", "windows"],
         "comma-dangle" : ["error", "never"],
         "arrow-parens" : ["error", "as-needed"],
-        "curly" : ["error", "multi"],
         "no-param-reassign" : ["error", {
             "props" : false
         }],
-        "quote-props" : ["error", "consistent"]
+        "quote-props" : ["error", "consistent"],
+        "brace-style" : ["error", "stroustrup"],
+        "max-len" : ["error", 120],
+        "no-console" : 0,
+        "no-restricted-syntax" : ["error", "literal"]
     }
 }
