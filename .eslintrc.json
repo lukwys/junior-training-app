@@ -1,0 +1,13 @@
+{
+    "extends": "airbnb-base",
+    "rules" : {
+        "linebreak-style" : ["error", "windows"],
+        "comma-dangle" : ["error", "never"],
+        "arrow-parens" : ["error", "as-needed"],
+        "curly" : ["error", "multi"],
+        "no-param-reassign" : ["error", {
+            "props" : false
+        }],
+        "quote-props" : ["error", "consistent"]
+    }
+}

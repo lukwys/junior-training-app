@@ -7,6 +7,6 @@ export default function renderSearchResult(results) {
         values.push(`<td>${results[e]}</td>`);
     }
 
-    return `<thead><tr>${headers.join('')}</tr></thead>` +
-        `<tbody><tr>${values.join('')}</tr></tbody>`
+  return `<thead><tr>${headers.join('')}</tr></thead>` +
+    `<tbody><tr>${values.join('')}</tr></tbody>`;
 }

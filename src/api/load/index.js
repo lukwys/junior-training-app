@@ -1,5 +1,5 @@
-import selectFactory from "./selectFactory"
+import selectFactory from './selectFactory';
 
 export default {
-    selectFactory
-}
+  selectFactory
+};

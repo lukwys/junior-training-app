@@ -1,6 +1,8 @@
 .*
 !.gitignore
 !.babelrc
+!.eslintrc.json
+!.eslintignore
 
 *.log
 /dist/
