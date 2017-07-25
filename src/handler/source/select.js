@@ -20,8 +20,8 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
   for (let id in inputsList) inputs[id] = {
     id: id,
     label: inputsList[id],
-    inAttr: `${inputAttr}='${id}'`,
-    outAttr: `${inputAttr}-out='${id}'`,
+    inAttr: `[${inputAttr}='${id}']`,
+    outAttr: `[${inputAttr}-out='${id}']`,
     attach: attach.select,
     handler: handler.select,
     render: render.select,
@@ -45,7 +45,7 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
     delete params[select.id];
     delete paramList[select.id];
 
-    handler.resetSelect(select);
+    handler.resetSelect(document.querySelector(select.inAttr));
   };
 
   const saveParam = (index, value) => {

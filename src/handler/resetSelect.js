@@ -1,5 +1,4 @@
-export default function handlerResetSelect(select) {
-  const input = document.querySelector(`[${select.inAttr}]`);
-  input.setAttribute('disabled', 'disabled');
-  input.value = '';
+export default function handlerResetSelect(inputElement) {
+    inputElement.setAttribute('disabled', 'disabled');
+    inputElement.value = '';
 }
