@@ -1,28 +1,15 @@
 export default function renderSourceSelect(inputs, template) {
     const result = [];
-
-    let placeholder = 'Loading data';
-
-    const getValue = (tag, input) => {
-        let val;
-        switch (tag) {
-        case 'id': val = input.id; break;
-        case 'label': val = input.label; break;
-        case 'options': val = `${input.id}-options`; break;
-        case 'placeholder': val = placeholder; break;
-        case 'attr_in': val = input.inAttr; break;
-        case 'attr_out': val = input.outAttr; break;
-        default: val = ''; break;
-        }
-        return val;
+    const getValue = {
+        id: input => input.id,
+        label: input => input.label,
+        inAttr: input => input.inAttr.slice(1, input.inAttr.length - 1),
+        outAttr: input => input.outAttr.slice(1, input.outAttr.length - 1)
     };
 
-    inputs.forEach(input => {
-        result.push(template.replace(/{(\w+)}/g,
-            (match, tag) => getValue(tag, input)));
-
-        placeholder = `Select ${input.id} before`;
-    });
+    inputs.forEach(input => result.push(
+        template.replace(/{(\w+)}/g, (match, tag) => getValue[tag](input))
+    ));
 
     return result;
 }
