@@ -1,6 +1,5 @@
 export default function renderSourceSelect(inputs, template) {
     const result = [];
-
     const getValue = {
         id: input => input.id,
         label: input => input.label,

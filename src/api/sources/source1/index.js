@@ -5,5 +5,5 @@ import season from './season';
 import team from './team';
 
 export default {
-  searchResult, league, country, season, team
+    searchResult, league, country, season, team
 };
