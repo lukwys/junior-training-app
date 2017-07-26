@@ -3,6 +3,7 @@
 !.babelrc
 !.eslintrc.json
 !.eslintignore
+!.travis.yaml
 
 *.log
 /dist/
