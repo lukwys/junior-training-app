@@ -1,6 +1,6 @@
-import src0 from './source0';
-import src1 from './source1';
+import footballDAta from './footballDAta';
+import apiFootball from './apiFootball';
 
 export default {
-    0: src0, 1: src1
+    0: footballDAta, 1: apiFootball
 };
