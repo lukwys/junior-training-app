@@ -1,3 +1,10 @@
+/**
+ *Manchester Uniterd is hardcoded, it has to be changed
+ * @param {string} token api key
+ * @param {string} url api url
+ *
+ */
+
 import fetchRequest from './fetchRequest';
 
 export default function apiSrc1SearchResult(token, url) {

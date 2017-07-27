@@ -1,3 +1,9 @@
+/**
+ * changes list of objects to list of strings that can be used in html tree
+ * @param {array} sources
+ * @param {string} template
+ */
+
 export default function renderSourceOption(sources, template) {
     const result = [];
 

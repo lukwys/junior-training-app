@@ -1,3 +1,6 @@
+/**
+ * function that returns promise that returns list of seasons
+ */
 export default function apiSrc1Season() {
     return () => {
         const list = [];

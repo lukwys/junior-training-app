@@ -1,3 +1,10 @@
+/**
+ * returns promise
+ * @param {Object} params
+ * @param {Object} nextElement
+ * @callback callback
+ */
+
 export default function handlerSelect(params, nextElement, callback) {
     nextElement.load(params)
         .then(list => {

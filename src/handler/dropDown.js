@@ -1,3 +1,7 @@
+/**
+ * function that enables custom menu dropdown list
+ *
+ */
 export default function dropDown() {
     const testBox = document.querySelectorAll('[class^="dropdown"]');
 
