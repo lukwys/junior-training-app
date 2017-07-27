@@ -1,4 +1,4 @@
-import select from '../../src/handler/select';
+import select from '../../src/features/modules/select/handler/select';
 
 describe('handler/select', () => {
     const callbackMock = jest.fn();

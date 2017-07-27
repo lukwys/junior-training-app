@@ -21,8 +21,8 @@ export default {
     },
     template: {
         input: '<div class="item"><label for="{id}"><p>{label}</p></label>' +
-        '<input list="{options}" id="{id}" placeholder="{placeholder}" {attr_in} disabled />' +
-        '<datalist id="{options}" {attr_out}></datalist></div>',
+        '<input list="" id="{id}" placeholder="" {inAttr} disabled />' +
+        '<datalist id="" {outAttr}></datalist></div>',
         option: '<option value="{key}">{value}</option>',
         results: {
             table: '<thead></thead><tbody></tbody>',

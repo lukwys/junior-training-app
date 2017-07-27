@@ -1,4 +1,4 @@
-import option from "../../../src/render/source/option"
+import option from "../../../src/features/modules/source/render/option"
 
 describe('render/source/option', () => {
     it('should match to Snapshot', () => {
