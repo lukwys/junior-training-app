@@ -1,7 +1,7 @@
-jest.mock('../../../src/api/sources/apiFootball/fetchRequest');
+jest.mock('../../../src/features/modules/source/api/sources/apiFootball/fetchRequest');
 
-import team from '../../../src/api/sources/apiFootball/team';
-import data from '../../../src/api/sources/apiFootball/__mocks__/testData'
+import team from '../../../src/features/modules/source/api/sources/apiFootball/team';
+import data from '../../../src/features/modules/source/api/sources/apiFootball/__mocks__/testData'
 
 describe('apiFootball team', () => {
     it('should return list id and name', () => {
@@ -9,4 +9,4 @@ describe('apiFootball team', () => {
             expect(resp).toEqual(data);
         });
     })
-})
+});

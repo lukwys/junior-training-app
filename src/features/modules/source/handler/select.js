@@ -1,16 +1,16 @@
-import api from '../../api';
-import attach from '../../attach';
-import render from '../../render';
-import handler from '../../handler';
+import api from '../api';
+import selectModule from '../../select';
+import attach from '../attach';
+import render from '../render';
+import handler from '../handler';
 
 export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, orderList, templates, sourcesConfig) {
-    const dataSourceAttr = `data-${dataAttr.dataSource}`;
-    const containerAttr = `data-${dataAttr.container}`;
-    const inputAttr = `data-${dataAttr.input}`;
+    const dataSourceAttr = `[data-${dataAttr.dataSource}]`;
+    const containerAttr = `[data-${dataAttr.container}]`;
+    const searchResultAttr = `[data-${dataAttr.searchResult}]`;
     const inputDataset = dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
 
     const order = orderList.map(e => e.slice());
-    const template = Object.assign({}, templates);
     const getLoader = api.load.selectFactory(sourcesConfig);
 
     const paramList = {};
@@ -21,23 +21,23 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
         inputs[id] = {
             id,
             label: inputsList[id],
-            inAttr: `[${inputAttr}='${id}']`,
-            outAttr: `[${inputAttr}-out='${id}']`,
-            attach: attach.select,
-            handler: handler.select,
-            render: render.select,
-            template: template.option
+            inAttr: `[data-${dataAttr.input}='${id}']`,
+            outAttr: `[data-${dataAttr.input}-out='${id}']`,
+            attach: selectModule.attach.select,
+            handler: selectModule.handler.select,
+            render: selectModule.render.select,
+            template: templates.option
         };
     });
 
     let extended = [{
-        outAttr: `data-${dataAttr.searchResult}`,
+        outAttr: searchResultAttr,
         attach: attach.searchResult,
         render: render.searchResult,
-        template: template.results
+        template: templates.results
     }];
 
-    attach.source.option(render.source.option(sourcesList.slice(), template.option), dataSourceAttr);
+    attach.option(render.option(sourcesList.slice(), templates.option), dataSourceAttr);
 
     const saveParamList = (element, resultList) => {
         paramList[element.id] = resultList;
@@ -72,20 +72,20 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
         ];
         extended[extended.length - 1].load = getLoader(srcId, 'searchResult');
 
-        attach.source.select(
-            render.source.select(extended.slice(0, extended.length - 1), template.input),
+        attach.select(
+            render.select(extended.slice(0, extended.length - 1), templates.input),
             containerAttr,
-            `data-${dataAttr.searchResult}`
+            searchResultAttr
         );
 
         extended[0].handler(params, extended[0], saveParamList);
     };
     sourceHandler(0);
 
-    document.querySelector(`[${dataSourceAttr}]`)
+    document.querySelector(dataSourceAttr)
         .addEventListener('change', event => sourceHandler(parseInt(event.target.value, 10)));
 
-    document.querySelector(`[${containerAttr}]`).addEventListener('change', event => {
+    document.querySelector(containerAttr).addEventListener('change', event => {
         const input = event.target.dataset[inputDataset];
 
         if (input !== undefined) {
