@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`searchResult should math to Snapshot 1`] = `"<thead><tr><th>h</th></tr></thead><tbody><tr><td>b</td></tr></tbody>"`;
+exports[`searchResult should math to Snapshot 1`] = `
+<TableRows
+  data={
+    Object {
+      "h": "b",
+    }
+  }
+/>
+`;
