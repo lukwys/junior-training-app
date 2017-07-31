@@ -1,3 +1,4 @@
+import * as mobx from 'mobx';
 import api from '../api';
 import attach from '../attach';
 import render from '../render';
@@ -5,19 +6,22 @@ import genInputs from './genInputs';
 import saveParam from './saveParam';
 import saveParamList from './saveParamList';
 
-export default function handlerSourceSelect(config, apiSources) {
+export default function handlerSourceSelect(store, config, apiSources) {
+    store.inputs = {};
+
     const dataSourceAttr = `[data-${config.dataAttr.dataSource}]`;
     const containerAttr = `[data-${config.dataAttr.container}]`;
     const searchResultAttr = `[data-${config.dataAttr.searchResult}]`;
     const inputDataset = config.dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
 
     const getLoader = api.load.selectFactory(apiSources);
-    let paramList = {};
-    let params = {};
-    Object.freeze(paramList);
-    Object.freeze(params);
+    const currentSrc = mobx.observable.box(0);
+    store.paramList = {};
+    store.params = {};
+    Object.freeze(store.paramList);
+    Object.freeze(store.params);
 
-    const inputs = genInputs(config.inputs, config.dataAttr, config.templates);
+    store.inputs = genInputs(store, config);
 
     let extended = [{
         outAttr: searchResultAttr,
@@ -28,18 +32,18 @@ export default function handlerSourceSelect(config, apiSources) {
 
     attach.option(render.option(config.sources.slice(), config.template.option), dataSourceAttr);
 
-    const sourceHandler = srcId => {
-        params = {};
+    mobx.autorun(() => {
+        store.params = {};
 
         extended = [
-            ...config.order[srcId].map(name => {
-                const input = inputs[name];
-                input.load = getLoader(srcId, name);
+            ...config.order[currentSrc].map(name => {
+                const input = store.inputs[name];
+                input.load = getLoader(currentSrc, name);
                 return input;
             }),
             extended[extended.length - 1]
         ];
-        extended[extended.length - 1].load = getLoader(srcId, 'searchResult');
+        extended[extended.length - 1].load = getLoader(currentSrc, 'searchResult');
 
         attach.select(
             render.select(extended.slice(0, extended.length - 1), config.template.input),
@@ -47,28 +51,27 @@ export default function handlerSourceSelect(config, apiSources) {
             searchResultAttr
         );
 
-        extended[0].handler(params, extended[0], saveParamList(paramList));
-    };
-    sourceHandler(0);
+        extended[0].handler(store.params, extended[0], saveParamList(store));
+    }, true);
 
     document.querySelector(dataSourceAttr)
-        .addEventListener('change', event => sourceHandler(parseInt(event.target.value, 10)));
+        .addEventListener('change', event => currentSrc.set(parseInt(event.target.value, 10)));
 
     document.querySelector(containerAttr).addEventListener('change', event => {
-        const input = event.target.dataset[inputDataset];
+        const input = store.inputs[event.target.dataset[inputDataset]];
 
         if (input !== undefined) {
+            input.value.set(event.target.value);
             const index = extended.findIndex(e => e.id === input);
 
-            ({ newParams: params, newParamList: paramList } =
-                saveParam(index, event.target.value, extended, params, paramList));
+            ({ newParams: store.params, newParamList: store.paramList } =
+                saveParam(index, event.target.value, extended, store.params, store.paramList));
 
-            extended
-                .find(e => e.id === input)
+            extended[index]
                 .handler(
-                    params,
+                    store.params,
                     extended[index + 1],
-                    saveParamList(paramList)
+                    saveParamList(store)
                 );
         }
     });

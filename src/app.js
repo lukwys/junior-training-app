@@ -1,18 +1,18 @@
-
 import source from './features/modules/source';
+import store from './store';
 import handler from './handler';
 import './css/style.scss';
 /**
- * runs bootstrap
+ * Bootstrapping application
  */
 function bootstrap() {
     console.log('~ Bootstrapping App');
 
-    console.log('~ Drop Down Menu');
-    handler.dropDown();
-
     console.log('~ Init select');
-    source.bootstrap();
+    source.bootstrap(store.source);
+
+    console.log('~ Init drop-down menu');
+    handler.dropDown();
 }
 
 bootstrap();

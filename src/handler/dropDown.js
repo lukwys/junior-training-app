@@ -1,6 +1,5 @@
 /**
- * function that enables custom menu dropdown list
- *
+ * Function that enables custom menu drop-down list
  */
 export default function dropDown() {
     const testBox = document.querySelectorAll('[class^="dropdown"]');
@@ -11,16 +10,13 @@ export default function dropDown() {
             .find(elem => event.target.parentNode === elem.parentNode);
 
         if (dropdown !== undefined) {
-            console.log(dropdown, dropdown.classList);
             dropdown.classList.toggle('visible');
             dropdown.classList.toggle('notVis');
         }
-    });
 
-    document.querySelector('.item').addEventListener('click', evnt => {
-        if (evnt.target.tagName === 'LI') {
-            const input = evnt.target.parentNode.parentNode.querySelector('input');
-            input.value = evnt.target.innerHTML;
+        if (event.target.tagName === 'LI') {
+            const input = event.target.parentNode.parentNode.querySelector('input');
+            input.value = event.target.innerHTML;
         }
     });
 }
