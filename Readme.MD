@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/benedyktdryl/junior-training-app.svg?branch=master)](https://travis-ci.org/benedyktdryl/junior-training-app)
+[![Build Status](https://travis-ci.org/benedyktdryl/junior-training-app.svg?branch=develop)](https://travis-ci.org/benedyktdryl/junior-training-app)
 
 # Football Stats Viewer
 
