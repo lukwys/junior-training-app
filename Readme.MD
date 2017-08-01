@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/benedyktdryl/junior-training-app.svg?branch=master)](https://travis-ci.org/benedyktdryl/junior-training-app)
+
 # Football Stats Viewer
 
 Example app for junior WebUI engineer training
