@@ -1,3 +1,9 @@
+/**
+ * function that returns array of
+ * @param {array} inputs array of strings
+ * @param {string} template strings witch HTML tags
+ * @return array
+ */
 export default function renderSourceSelect(inputs, template) {
     const result = [];
     const getValue = {
