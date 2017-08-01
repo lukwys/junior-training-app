@@ -3,7 +3,7 @@ import season from '../../../src/features/modules/source/api/sources/footballDat
 describe('footballDAta seasons', () => {
     it('should return season list', () => {
         season()().then(resp => {
-            expect(resp[0].name).toBe('Season 2016');
+            expect(resp[0].name).toBe('Season 2017');
         });
     });
 });

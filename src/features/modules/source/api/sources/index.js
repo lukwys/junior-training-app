@@ -1,6 +1,6 @@
-import footballDAta from './footballDAta';
+import footballData from './footballData';
 import apiFootball from './apiFootball';
 
 export default {
-    0: footballDAta, 1: apiFootball
+    0: footballData, 1: apiFootball
 };
