@@ -6,40 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Statistics</title>
-    <script src="../wallaby.js"></script>
 </head>
 
 <body>
     <div class="main">
-        <label for="data-source">Data source</label>
-        <select id="data-source" data-select--data-source></select>
-
-        <div class="select-container" data-select--container>
-            <div class="item">
-                <label for="league">
-                    <p>Leagues</p>
-                </label>
-                <input list="leagues" name="league" id="league" placeholder="Loading data" data-select--league disabled />
-                <datalist id="leagues" data-select--league-out></datalist>
-            </div>
-            <div class="item">
-                <label for="team">
-                    <p>Teams</p>
-                </label>
-                <input list="teams" name="team" id="team" placeholder="Select league before" data-select--team disabled />
-                <datalist id="teams" data-select--team-out></datalist>
-            </div>
-            <div class="item">
-                <label for="season">
-                    <p>Seasons</p>
-                </label>
-                <input list="seasons" name="season" id="season" placeholder="Select team before" data-select--season disabled />
-                <datalist id="seasons" data-select--season-out></datalist>
+        <div class="container">
+            <div class="con-sel">
+                <select data-select--data-source></select>
+                <div class="arrow">&#9662;</div>
             </div>
         </div>
-        <div class="search-results">
-            <table data-select--search-result>
-            </table>
+
+        <div class="container" data-select--container></div>
+
+        <div class="container">
+            <table data-select--search-result></table>
         </div>
     </div>
     <script src="dist/app.js"></script>
