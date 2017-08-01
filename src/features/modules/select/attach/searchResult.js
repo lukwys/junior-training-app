@@ -3,6 +3,8 @@
  * @param {string} table
  * @param {Object} select
  */
+import ReactDOM from 'react-dom';
+
 export default function attachSearchResult(table, select) {
-    document.querySelector(select.outAttr).innerHTML = table;
+    ReactDOM.render(table, document.querySelector(select.outAttr));
 }

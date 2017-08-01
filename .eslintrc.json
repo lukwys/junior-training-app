@@ -7,6 +7,13 @@
     "globals" : {
         "document" : false
     },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
     "rules" : {
         "indent": ["error", 4],
         "linebreak-style" : ["error", "windows"],

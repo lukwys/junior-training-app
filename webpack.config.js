@@ -13,9 +13,10 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             include: path.resolve(__dirname, 'src'),
-            use: [
-                'babel-loader'
-            ]
+            loader :'babel-loader',
+            query  :{
+                presets:['react','es2015']
+            }
         }, {
             test: /\.scss$/,
             use: [
