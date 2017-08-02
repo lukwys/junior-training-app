@@ -4,29 +4,27 @@ import attach from '../attach';
 import render from '../render';
 import handler from '../handler';
 
-export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, orderList, templates, sourcesConfig) {
-    const dataSourceAttr = `[data-${dataAttr.dataSource}]`;
-    const containerAttr = `[data-${dataAttr.container}]`;
-    const searchResultAttr = `[data-${dataAttr.searchResult}]`;
-    const inputDataset = dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
+export default function handlerSourceSelect(config, apiSources) {
+    const dataSourceAttr = `[data-${config.dataAttr.dataSource}]`;
+    const containerAttr = `[data-${config.dataAttr.container}]`;
+    const searchResultAttr = `[data-${config.dataAttr.searchResult}]`;
+    const inputDataset = config.dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
 
-    const order = orderList.map(e => e.slice());
-    const getLoader = api.load.selectFactory(sourcesConfig);
-
+    const getLoader = api.load.selectFactory(apiSources);
     const paramList = {};
     let params = {};
 
     const inputs = {};
-    Object.keys(inputsList).forEach(id => {
+    Object.keys(config.inputs).forEach(id => {
         inputs[id] = {
             id,
-            label: inputsList[id],
-            inAttr: `[data-${dataAttr.input}='${id}']`,
-            outAttr: `[data-${dataAttr.input}-out='${id}']`,
+            label: config.inputs[id],
+            inAttr: `[data-${config.dataAttr.input}='${id}']`,
+            outAttr: `[data-${config.dataAttr.input}-out='${id}']`,
             attach: selectModule.attach.select,
             handler: selectModule.handler.select,
             render: selectModule.render.select,
-            template: templates.option
+            template: config.template.option
         };
     });
 
@@ -34,10 +32,10 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
         outAttr: searchResultAttr,
         attach: attach.searchResult,
         render: render.searchResult,
-        template: templates.results
+        template: config.template.results
     }];
 
-    attach.option(render.option(sourcesList.slice(), templates.option), dataSourceAttr);
+    attach.option(render.option(config.sources.slice(), config.template.option), dataSourceAttr);
 
     const saveParamList = (element, resultList) => {
         paramList[element.id] = resultList;
@@ -63,7 +61,7 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
         params = {};
 
         extended = [
-            ...order[srcId].map(name => {
+            ...config.order[srcId].map(name => {
                 const input = inputs[name];
                 input.load = getLoader(srcId, name);
                 return input;
@@ -73,7 +71,7 @@ export default function handlerSourceSelect(inputsList, dataAttr, sourcesList, o
         extended[extended.length - 1].load = getLoader(srcId, 'searchResult');
 
         attach.select(
-            render.select(extended.slice(0, extended.length - 1), templates.input),
+            render.select(extended.slice(0, extended.length - 1), config.template.input),
             containerAttr,
             searchResultAttr
         );
