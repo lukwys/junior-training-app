@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`f/m/source/render/option should match to Snapshot 1`] = `
-Array [
-  "lorem_0_[object Object]",
-  "lorem_1_[object Object]",
-]
-`;

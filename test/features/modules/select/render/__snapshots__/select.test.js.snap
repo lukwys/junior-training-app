@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`f/m/select/render/select should return array of strings 1`] = `
-Array [
-  "abc-1234",
-  "abc-xyzw",
-]
-`;

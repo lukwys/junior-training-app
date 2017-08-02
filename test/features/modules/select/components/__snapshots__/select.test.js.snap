@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`f/m/select/components/select should return array of strings 1`] = `
+<ul>
+  <li>
+    1234
+  </li>
+  <li>
+    xyzw
+  </li>
+</ul>
+`;

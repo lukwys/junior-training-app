@@ -11,8 +11,8 @@ export default function genInputs(config) {
             outAttr: `[data-${config.dataAttr.input}-out='${id}']`,
             attach: selectModule.attach.select,
             handler: selectModule.handler.select,
-            render: selectModule.render.select,
-            template: config.template.option
+            components: selectModule.components.select,
+            template: templates.option
         };
     });
 

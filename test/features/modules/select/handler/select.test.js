@@ -6,7 +6,7 @@ describe('f/m/select/handler/select', () => {
     const element = {
         load: jest.fn(() => new Promise(resolve => resolve('list'))),
         attach: jest.fn(),
-        render: jest.fn(() => 'rendered value'),
+        components: jest.fn(() => 'rendered value'),
         template: 'template value'
     };
 
@@ -17,10 +17,10 @@ describe('f/m/select/handler/select', () => {
         expect(element.load.mock.calls[0][0]).toBe(params);
     });
 
-    it('should call render only once and with proper parameters', () => {
-        expect(element.render.mock.calls.length).toBe(1);
-        expect(element.render.mock.calls[0][0]).toBe('list');
-        expect(element.render.mock.calls[0][1]).toBe('template value');
+    it('should call components only once and with proper parameters', () => {
+        expect(element.components.mock.calls.length).toBe(1);
+        expect(element.components.mock.calls[0][0]).toBe('list');
+        expect(element.components.mock.calls[0][1]).toBe('template value');
     });
 
     it('should call attach only once and with proper parameters', () => {

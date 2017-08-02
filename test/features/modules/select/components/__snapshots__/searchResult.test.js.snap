@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`f/m/select/components/searchResult should math to Snapshot 1`] = `
+<table>
+  <tr>
+    <th>
+      h
+    </th>
+  </tr>
+  <tr>
+    <td>
+      b
+    </td>
+  </tr>
+</table>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`f/m/source/components/option should match to Snapshot 1`] = `
+<select>
+  <option>
+    Object {
+      "index": "qwer",
+      "source": "1234",
+    }
+  </option>
+  <option>
+    Object {
+      "index": "rock",
+      "source": "0987",
+    }
+  </option>
+</select>
+`;

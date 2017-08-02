@@ -1,6 +1,6 @@
 import api from '../api';
 import attach from '../attach';
-import render from '../render';
+import components from '../components';
 import genInputs from './genInputs';
 import saveParam from './saveParam';
 import saveParamList from './saveParamList';
@@ -19,11 +19,11 @@ export default function handlerSourceSelect(config, apiSources) {
     let extended = [{
         outAttr: searchResultAttr,
         attach: attach.searchResult,
-        render: render.searchResult,
+        components: components.searchResult,
         template: config.template.results
     }];
 
-    attach.option(render.option(config.sources.slice(), config.template.option), dataSourceAttr);
+    attach.option(components.option(config.sources.slice(), config.template.option), dataSourceAttr);
 
     mobx.autorun(() => {
         store.source.params = {};
@@ -39,7 +39,7 @@ export default function handlerSourceSelect(config, apiSources) {
         extended[extended.length - 1].load = getLoader(store.source.currentSrc, 'searchResult');
 
         attach.select(
-            render.select(extended.slice(0, extended.length - 1), config.template.input),
+            components.select(extended.slice(0, extended.length - 1), config.template.input),
             containerAttr,
             searchResultAttr
         );

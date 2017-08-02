@@ -1,7 +1,7 @@
 import attach from './attach';
 import handler from './handler';
-import render from './render';
+import components from './components';
 
 export default {
-    attach, handler, render
+    attach, handler, components
 };
