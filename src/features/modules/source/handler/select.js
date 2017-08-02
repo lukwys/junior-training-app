@@ -1,8 +1,9 @@
 import api from '../api';
-import selectModule from '../../select';
 import attach from '../attach';
 import render from '../render';
-import handler from '../handler';
+import genInputs from './genInputs';
+import saveParam from './saveParam';
+import saveParamList from './saveParamList';
 
 export default function handlerSourceSelect(config, apiSources) {
     const dataSourceAttr = `[data-${config.dataAttr.dataSource}]`;
@@ -11,22 +12,12 @@ export default function handlerSourceSelect(config, apiSources) {
     const inputDataset = config.dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
 
     const getLoader = api.load.selectFactory(apiSources);
-    const paramList = {};
+    let paramList = {};
     let params = {};
+    Object.freeze(paramList);
+    Object.freeze(params);
 
-    const inputs = {};
-    Object.keys(config.inputs).forEach(id => {
-        inputs[id] = {
-            id,
-            label: config.inputs[id],
-            inAttr: `[data-${config.dataAttr.input}='${id}']`,
-            outAttr: `[data-${config.dataAttr.input}-out='${id}']`,
-            attach: selectModule.attach.select,
-            handler: selectModule.handler.select,
-            render: selectModule.render.select,
-            template: config.template.option
-        };
-    });
+    const inputs = genInputs(config.inputs, config.dataAttr, config.templates);
 
     let extended = [{
         outAttr: searchResultAttr,
@@ -36,26 +27,6 @@ export default function handlerSourceSelect(config, apiSources) {
     }];
 
     attach.option(render.option(config.sources.slice(), config.template.option), dataSourceAttr);
-
-    const saveParamList = (element, resultList) => {
-        paramList[element.id] = resultList;
-    };
-
-    const resetSelect = select => {
-        delete params[select.id];
-        delete paramList[select.id];
-
-        handler.resetSelect(document.querySelector(select.inAttr));
-    };
-
-    const saveParam = (index, value) => {
-        const elementId = extended[index].id;
-        params[elementId] = paramList[elementId].find(e => e.name === value).id;
-
-        extended
-            .slice(index + 1, extended.length - 1)
-            .forEach(resetSelect);
-    };
 
     const sourceHandler = srcId => {
         params = {};
@@ -76,7 +47,7 @@ export default function handlerSourceSelect(config, apiSources) {
             searchResultAttr
         );
 
-        extended[0].handler(params, extended[0], saveParamList);
+        extended[0].handler(params, extended[0], saveParamList(paramList));
     };
     sourceHandler(0);
 
@@ -89,13 +60,15 @@ export default function handlerSourceSelect(config, apiSources) {
         if (input !== undefined) {
             const index = extended.findIndex(e => e.id === input);
 
-            saveParam(index, event.target.value);
+            ({ newParams: params, newParamList: paramList } =
+                saveParam(index, event.target.value, extended, params, paramList));
+
             extended
                 .find(e => e.id === input)
                 .handler(
-                params,
-                extended[index + 1],
-                saveParamList
+                    params,
+                    extended[index + 1],
+                    saveParamList(paramList)
                 );
         }
     });
