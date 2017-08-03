@@ -1,4 +1,4 @@
-import seasons from '../../../src/features/modules/source/api/sources/apiFootball/season';
+import seasons from '../../../../../../../src/features/modules/source/api/sources/apiFootball/season';
 
 describe('apiFootball seasons', () => {
     const date = new Date().getFullYear();

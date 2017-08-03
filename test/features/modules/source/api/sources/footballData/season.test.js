@@ -1,4 +1,4 @@
-import season from '../../../src/features/modules/source/api/sources/footballData/season';
+import season from '../../../../../../../src/features/modules/source/api/sources/footballData/season';
 
 describe('footballDAta seasons', () => {
     it('should return season list', () => {

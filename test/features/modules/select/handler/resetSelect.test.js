@@ -1,4 +1,4 @@
-import resetSelect from '../../src/features/modules/select/handler/resetSelect';
+import resetSelect from '../../../../../src/features/modules/select/handler/resetSelect';
 
 describe('handler/resetSelect', () => {
     it('should remove value and set attribute disabled for received <input> element', () => {

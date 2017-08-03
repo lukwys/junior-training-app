@@ -1,4 +1,4 @@
-import select from "../../../src/features/modules/source/render/select"
+import select from "../../../../../src/features/modules/source/render/select"
 
 describe('render/source/select', () => {
     it('should match to Snapshot', () => {
