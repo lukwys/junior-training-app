@@ -1,6 +1,6 @@
 import seasons from '../../../../../../../src/features/modules/source/api/sources/apiFootball/season';
 
-describe('apiFootball seasons', () => {
+describe('f/m/source/api/apiFootball/seasons', () => {
     const date = new Date().getFullYear();
     it('should return seasons list', () => {
         seasons()().then(resp => {

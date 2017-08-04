@@ -1,6 +1,6 @@
 import select from "../../../../../src/features/modules/source/render/select"
 
-describe('render/source/select', () => {
+describe('f/m/source/render/select', () => {
     it('should match to Snapshot', () => {
         
         const results = select([{

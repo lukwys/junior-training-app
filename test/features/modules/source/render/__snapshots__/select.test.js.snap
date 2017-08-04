@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render/source/select should match to Snapshot 1`] = `
+exports[`f/m/source/render/select should match to Snapshot 1`] = `
 Array [
   "lorem_data-test_rock_kamienie_seed",
 ]
