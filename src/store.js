@@ -1,8 +1,6 @@
 import * as mobx from 'mobx';
 
-export default mobx.observable({
-    mobx,
-
+const store = mobx.observable({
     select: {},
     source: {
         inputs: {},
@@ -11,3 +9,5 @@ export default mobx.observable({
         currentSrc: mobx.observable.box(0)
     }
 });
+
+export { store, mobx };
