@@ -12,7 +12,7 @@ export default function genInputs(config) {
             attach: selectModule.attach.select,
             handler: selectModule.handler.select,
             components: selectModule.components.select,
-            template: templates.option
+            template: config.template.option
         };
     });
 
