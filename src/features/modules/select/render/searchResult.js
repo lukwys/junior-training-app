@@ -12,12 +12,11 @@ export default function renderSearchResult(results) {
             super(props);
         }
         render() {
-            const { data } = this.props;
-            const headers = Object.keys(data).map(key =>
+            const headers = Object.keys(this.props).map(key =>
                 <th>${key}</th>
             );
-            const values = Object.keys(data).map(key =>
-                <th>${data[key]}</th>
+            const values = Object.keys(this.props).map(key =>
+                <th>${this.props[key]}</th>
             );
             return (
                 <table>

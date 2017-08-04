@@ -1,18 +1,18 @@
 import selectModule from '../../select';
 
-export default function genInputs(inputsList, dataAttr, templates) {
+export default function genInputs(config) {
     const result = {};
 
-    Object.keys(inputsList).forEach(id => {
+    Object.keys(config.inputs).forEach(id => {
         result[id] = {
             id,
-            label: inputsList[id],
-            inAttr: `[data-${dataAttr.input}='${id}']`,
-            outAttr: `[data-${dataAttr.input}-out='${id}']`,
+            label: config.inputs[id],
+            inAttr: `[data-${config.dataAttr.input}='${id}']`,
+            outAttr: `[data-${config.dataAttr.input}-out='${id}']`,
             attach: selectModule.attach.select,
             handler: selectModule.handler.select,
             render: selectModule.render.select,
-            template: templates.option
+            template: config.template.option
         };
     });
 
