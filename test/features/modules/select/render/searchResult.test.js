@@ -1,4 +1,4 @@
-import searchResult from '../../src/features/modules/select/render/searchResult';
+import searchResult from '../../../../../src/features/modules/select/render/searchResult';
 
 describe('searchResult', () => {
     it('should math to Snapshot', () => {
