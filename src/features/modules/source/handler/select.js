@@ -1,4 +1,3 @@
-import * as mobx from 'mobx';
 import api from '../api';
 import attach from '../attach';
 import render from '../render';
@@ -7,21 +6,14 @@ import saveParam from './saveParam';
 import saveParamList from './saveParamList';
 
 export default function handlerSourceSelect(store, config, apiSources) {
-    store.inputs = {};
-
     const dataSourceAttr = `[data-${config.dataAttr.dataSource}]`;
     const containerAttr = `[data-${config.dataAttr.container}]`;
     const searchResultAttr = `[data-${config.dataAttr.searchResult}]`;
     const inputDataset = config.dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
 
     const getLoader = api.load.selectFactory(apiSources);
-    const currentSrc = mobx.observable.box(0);
-    store.paramList = {};
-    store.params = {};
-    Object.freeze(store.paramList);
-    Object.freeze(store.params);
 
-    store.inputs = genInputs(store, config);
+    store.inputs = genInputs(config);
 
     let extended = [{
         outAttr: searchResultAttr,
@@ -32,18 +24,18 @@ export default function handlerSourceSelect(store, config, apiSources) {
 
     attach.option(render.option(config.sources.slice(), config.template.option), dataSourceAttr);
 
-    mobx.autorun(() => {
+    store.mobx.autorun(() => {
         store.params = {};
 
         extended = [
-            ...config.order[currentSrc].map(name => {
+            ...config.order[store.currentSrc].map(name => {
                 const input = store.inputs[name];
-                input.load = getLoader(currentSrc, name);
+                input.load = getLoader(store.currentSrc, name);
                 return input;
             }),
             extended[extended.length - 1]
         ];
-        extended[extended.length - 1].load = getLoader(currentSrc, 'searchResult');
+        extended[extended.length - 1].load = getLoader(store.currentSrc, 'searchResult');
 
         attach.select(
             render.select(extended.slice(0, extended.length - 1), config.template.input),
@@ -55,7 +47,7 @@ export default function handlerSourceSelect(store, config, apiSources) {
     }, true);
 
     document.querySelector(dataSourceAttr)
-        .addEventListener('change', event => currentSrc.set(parseInt(event.target.value, 10)));
+        .addEventListener('change', event => store.currentSrc.set(parseInt(event.target.value, 10)));
 
     document.querySelector(containerAttr).addEventListener('change', event => {
         const input = store.inputs[event.target.dataset[inputDataset]];
