@@ -1,6 +1,6 @@
 import resetSelect from '../../../../../src/features/modules/select/handler/resetSelect';
 
-describe('handler/resetSelect', () => {
+describe('f/m/select/handler/resetSelect', () => {
     it('should remove value and set attribute disabled for received <input> element', () => {
         const inputElement = document.createElement('input');
 

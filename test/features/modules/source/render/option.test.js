@@ -1,6 +1,6 @@
 import option from "../../../../../src/features/modules/source/render/option"
 
-describe('render/source/option', () => {
+describe('f/m/source/render/option', () => {
     it('should match to Snapshot', () => {
         
         const results = option([

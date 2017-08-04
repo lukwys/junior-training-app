@@ -1,6 +1,6 @@
 import select from '../../../../../src/features/modules/select/handler/select';
 
-describe('handler/select', () => {
+describe('f/m/select/handler/select', () => {
     const callbackMock = jest.fn();
     const params = {paramKey: 'paramValue'};
     const element = {
