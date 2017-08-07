@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`f/m/source/components/select should match to Snapshot 1`] = `
+<div>
+  <div
+    className="item"
+  >
+    <input
+      data-testsel="test1"
+      disabled="true"
+      placeholder="Test #1"
+    />
+    <div
+      className="dropdown-test1 notVis"
+      data-testsel-out="test1"
+    />
+    <div
+      className="arrow"
+      data-select--list="dropdown-test1"
+    >
+      ▾
+    </div>
+  </div>
+</div>
+`;

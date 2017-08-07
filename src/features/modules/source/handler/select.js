@@ -4,7 +4,7 @@ import components from '../components';
 import genInputs from './genInputs';
 import saveParam from './saveParam';
 import saveParamList from './saveParamList';
-import { store, mobx } from '../../../../store';
+import { store } from '../../../../store';
 
 export default function handlerSourceSelect(config, apiSources) {
     const dataSourceAttr = `[data-${config.dataAttr.dataSource}]`;
@@ -25,21 +25,21 @@ export default function handlerSourceSelect(config, apiSources) {
 
     attach.option(components.option(config.sources.slice(), config.template.option), dataSourceAttr);
 
-    mobx.autorun(() => {
+    store.source.currentSrc.observe(({ newValue: newSrc }) => {
         store.source.params = {};
 
         extended = [
-            ...config.order[store.source.currentSrc].map(name => {
+            ...config.order[newSrc].map(name => {
                 const input = store.source.inputs[name];
-                input.load = getLoader(store.source.currentSrc, name);
+                input.load = getLoader(newSrc, name);
                 return input;
             }),
             extended[extended.length - 1]
         ];
-        extended[extended.length - 1].load = getLoader(store.source.currentSrc, 'searchResult');
+        extended[extended.length - 1].load = getLoader(newSrc, 'searchResult');
 
         attach.select(
-            components.select(extended.slice(0, extended.length - 1), config.template.input),
+            components.select(extended.slice(0, extended.length - 1)),
             containerAttr,
             searchResultAttr
         );

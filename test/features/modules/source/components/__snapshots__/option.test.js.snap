@@ -2,17 +2,15 @@
 
 exports[`f/m/source/components/option should match to Snapshot 1`] = `
 <select>
-  <option>
-    Object {
-      "index": "qwer",
-      "source": "1234",
-    }
+  <option
+    value={0}
+  >
+    fsdfdsf
   </option>
-  <option>
-    Object {
-      "index": "rock",
-      "source": "0987",
-    }
+  <option
+    value={1}
+  >
+    dsfsfd
   </option>
 </select>
 `;

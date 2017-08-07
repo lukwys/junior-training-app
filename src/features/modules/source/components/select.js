@@ -10,13 +10,22 @@ import React from 'react';
 export default function SourceSelect(inputs) {
     return (
         <div>
-            {inputs.map(value =>
-                <div className='item'>
-                    <input placeholder={value.input} disabled='true' />
-                    <div className={`dropdown-${value.id}`}></div>
-                    <div className='arrow' data-select--list={`dropdown-${value.id}`}>&#9662;</div>
-                </div>
-            )}
+            {
+                inputs.map(value => {
+                    const [, inAttrName, inAttrVal] = value.inAttr.match(/([\w-]+)='(\w+)'/);
+                    const [, outAttrName, outAttrVal] = value.outAttr.match(/([\w-]+)='(\w+)'/);
+                    const [inAttr, outAttr] = [{}, {}];
+
+                    inAttr[inAttrName] = inAttrVal;
+                    outAttr[outAttrName] = outAttrVal;
+
+                    return <div className='item'>
+                        <input placeholder={value.label} disabled='true' {...inAttr} />
+                        <div className={`dropdown-${value.id} notVis`} {...outAttr}></div>
+                        <div className='arrow' data-select--list={`dropdown-${value.id}`}>&#9662;</div>
+                    </div>;
+                }
+                )}
         </div>
     );
 }

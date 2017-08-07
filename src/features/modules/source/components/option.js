@@ -7,5 +7,5 @@ import React from 'react';
  */
 
 export default function SourceOption(sources) {
-    return (<select>{sources.map(option => <option>{option}</option>)}</select>);
+    return (<select>{sources.map((option, id) => <option value={id}>{option}</option>)}</select>);
 }
