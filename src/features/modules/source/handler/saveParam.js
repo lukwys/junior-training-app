@@ -1,20 +1,24 @@
-import handler from '../../select/handler/resetSelect';
+import resetSelect from '../../select/handler/resetSelect';
 
 export default function saveParam(index, value, extended, params, paramList) {
     const newParams = { ...params };
     const newParamList = { ...paramList };
-
     const elementId = extended[index].id;
-    newParams[elementId] = newParamList[elementId].find(e => e.name === value).id;
+    const elem = newParamList[elementId].find(e => e.name === value);
 
-    extended
-        .slice(index + 1, extended.length - 1)
-        .forEach(select => {
-            delete newParams[select.id];
-            delete newParamList[select.id];
+    if (elem !== undefined) {
+        newParams[elementId] = elem.id;
 
-            handler.resetSelect(document.querySelector(select.inAttr));
-        });
+        extended
+            .slice(index + 1, extended.length - 1)
+            .forEach(select => {
+                delete newParams[select.id];
+                delete newParamList[select.id];
 
-    return { newParams: Object.freeze(newParams), newParamList: Object.freeze(newParamList) };
+                resetSelect(document.querySelector(select.inAttr));
+            });
+    }
+
+
+    return { newParams, newParamList };
 }

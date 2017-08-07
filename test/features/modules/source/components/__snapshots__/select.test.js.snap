@@ -10,8 +10,8 @@ exports[`f/m/source/components/select should match to Snapshot 1`] = `
       disabled="true"
       placeholder="Test #1"
     />
-    <div
-      className="dropdown-test1 notVis"
+    <ul
+      className="dropdown-test1 dropdowns notVis"
       data-testsel-out="test1"
     />
     <div

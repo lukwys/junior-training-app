@@ -20,8 +20,8 @@ export default function SourceSelect(inputs) {
                     outAttr[outAttrName] = outAttrVal;
 
                     return <div className='item'>
-                        <input placeholder={value.label} disabled='true' {...inAttr} />
-                        <div className={`dropdown-${value.id} notVis`} {...outAttr}></div>
+                         <input placeholder={value.label} disabled='true' {...inAttr} />
+                        <ul className={`dropdown-${value.id} dropdowns notVis`} {...outAttr}></ul>
                         <div className='arrow' data-select--list={`dropdown-${value.id}`}>&#9662;</div>
                     </div>;
                 }

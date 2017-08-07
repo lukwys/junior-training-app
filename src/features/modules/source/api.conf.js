@@ -9,7 +9,7 @@ export default {
             }
         },
         {
-            token: '23550c5bb46c58f23880492d13ee0d4d4b65916b98770e232cfe3d0f3c531bf8',
+            token: '7c91525785dace65c6c427512c515daefb5907730070e6217f7cf69ce7d209b5',
             url: {
                 country: 'http://localhost:9000/apifootball.com/api/?action=get_countries',
                 league: 'http://localhost:9000/apifootball.com/api/?action=get_leagues&country_id={country}',

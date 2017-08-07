@@ -1,5 +1,6 @@
 import source from './features/modules/source';
 import handler from './handler';
+import './css/reset.scss';
 import './css/style.scss';
 /**
  * Bootstrapping application
