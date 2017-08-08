@@ -1,31 +1,59 @@
 {
-    "extends": "airbnb-base",
-    "env" : {
-        "browser" : true,
-        "node" : true
-    },
-    "globals" : {
-        "document" : false
-    },
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "rules" : {
-        "indent": ["error", 4],
-        "linebreak-style" : ["error", "windows"],
-        "comma-dangle" : ["error", "never"],
-        "arrow-parens" : ["error", "as-needed"],
-        "no-param-reassign" : ["error", {
-            "props" : false
-        }],
-        "quote-props" : ["error", "consistent"],
-        "brace-style" : ["error", "stroustrup"],
-        "max-len" : ["error", 120],
-        "no-console" : 0,
-        "no-restricted-syntax" : ["error", "literal"]
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "document": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
     }
+  },
+  "rules": {
+    "indent": [
+      "error",
+      4
+    ],
+    "no-unused-vars": "off",
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "quote-props": [
+      "error",
+      "consistent"
+    ],
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
+    "max-len": [
+      "error",
+      120
+    ],
+    "no-console": 0,
+    "no-restricted-syntax": [
+      "error",
+      "literal"
+    ]
+  }
 }
