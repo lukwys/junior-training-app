@@ -1,0 +1,33 @@
+@import "values";
+
+.main {
+  min-width: 450px;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.container {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  max-width: 1200px;
+  min-height: 150px;
+
+  background-color: $pas-gray;
+  border: 1px solid $stn-gray;
+  border-radius: 5px;
+}
+
+.arrow {
+  width: 40px;
+  padding: 0 5px;
+  height: 100%;
+  font-size: 1.2em;
+  border-left: 1px solid $stn-gray;
+}

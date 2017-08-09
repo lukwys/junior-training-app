@@ -1,0 +1,21 @@
+@import "values";
+
+.con-sel {
+  cursor: pointer;
+  display: flex;
+  border: solid 1px $stn-gray;
+  border-radius: 3px;
+  width: 250px;
+  height: 37px;
+}
+
+select {
+  cursor: pointer;
+  border: 0;
+  padding: 5px 35px;
+  height: 100%;
+  font-size: .9em;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

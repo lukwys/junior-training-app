@@ -1,0 +1,16 @@
+@import "values";
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  td {
+    color: $btn-blue;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid $stn-gray;
+    background-color: $pas-blue;
+  }
+  th {
+    border-bottom: 1px solid $stn-gray;
+  }
+}

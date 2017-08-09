@@ -1,13 +1,15 @@
 import React from 'react';
+import './css/input.scss';
 
+import InputField from './inputFieldComponent';
 import InputDataList from './inputDataListComponent';
-import InputFancyField from './inputFancyFieldComponent';
 
 export default function InputComponent(props) {
     return (
-        <div data-name={props.name}>
-            <InputFancyField />
-            <InputDataList />
+        <div className="item">
+            <InputField name={props.name}/>
+            <InputDataList name={props.name}/>
+            <div className="arrow" data-select--list={`dropdown-${props.name}`}>&#9662;</div>
         </div>
     );
 }

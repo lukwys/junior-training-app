@@ -1,0 +1,20 @@
+@import "values";
+
+.item {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  margin: 10px;
+  border-radius: 3px;
+
+  text-align: center;
+  font-size: .9em;
+
+  width: 260px;
+  text-align: center;
+  height: 2em;
+
+  background-color: white;
+  border: solid 1px $stn-gray;
+
+}
