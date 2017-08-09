@@ -1,6 +1,13 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import './css/results.scss';
 
-export default function ResultsComponent(props) {
-    return <div className="container" data-select--search-result />;
-}
+const ResultsComponent = observer(
+    class ResultsComponent extends React.Component {
+        render() {
+            return <div className="container" data-select--search-result/>;
+        }
+    }
+);
+
+export default ResultsComponent;

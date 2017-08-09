@@ -1,8 +1,15 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import './css/inputField.scss';
 
-export default function InputFieldComponent(props) {
-    return (
-        <input placeholder={props.name} disabled/>
-    );
-}
+const InputFieldComponent = observer(
+    class InputFieldComponent extends React.Component {
+        render() {
+            return (
+                <input placeholder={this.props.name} disabled/>
+            );
+        }
+    }
+);
+
+export default InputFieldComponent;

@@ -9,28 +9,28 @@ input {
   height: 100%;
   font-size: .9em;
   border: 0;
+}
 
-  ::-webkit-calendar-picker-indicator {
-    display: none;
-  }
+::-webkit-calendar-picker-indicator {
+  display: none;
+}
 
-  ::-webkit-input-placeholder {
-    color: black;
-    text-align: center;
-  }
+::-webkit-input-placeholder {
+  color: black;
+  text-align: center;
+}
 
-  ::-moz-placeholder {
-    color: black;
-    text-align: center;
-  }
+::-moz-placeholder {
+  color: black;
+  text-align: center;
+}
 
-  :-ms-input-placeholder {
-    color: black;
-    text-align: center;
-  }
+:-ms-input-placeholder {
+  color: black;
+  text-align: center;
+}
 
-  :-moz-placeholder {
-    color: black;
-    text-align: center;
-  }
+:-moz-placeholder {
+  color: black;
+  text-align: center;
 }
