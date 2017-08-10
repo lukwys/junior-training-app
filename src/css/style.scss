@@ -166,8 +166,8 @@ body {
   text-align: left;
   background-color: white;
   z-index: 1;
-
-  >li{
+  
+  li{
     border-left : 1px solid $stn-gray;
     border-right : 1px solid $stn-gray;
     display: block;
@@ -184,8 +184,4 @@ body {
 
 .notVis {
   display: none;
-}
-
-.visible {
-  display: block;
 }

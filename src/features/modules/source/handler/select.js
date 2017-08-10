@@ -4,14 +4,13 @@ import components from '../components';
 import genInputs from './genInputs';
 import saveParam from './saveParam';
 import saveParamList from './saveParamList';
-import { store } from '../../../../store';
+import { store, mobx } from '../../../../store';
 
 export default function handlerSourceSelect(config, apiSources) {
     const dataSourceAttr = `[data-${config.dataAttr.dataSource}]`;
     const containerAttr = `[data-${config.dataAttr.container}]`;
     const searchResultAttr = `[data-${config.dataAttr.searchResult}]`;
     const inputDataset = config.dataAttr.input.replace(/-\w/g, match => match[1].toUpperCase());
-
     const getLoader = api.load.selectFactory(apiSources);
 
     store.source.inputs = genInputs(config);
@@ -32,6 +31,7 @@ export default function handlerSourceSelect(config, apiSources) {
             ...config.order[newSrc].map(name => {
                 const input = store.source.inputs[name];
                 input.load = getLoader(newSrc, name);
+                input.value = mobx.observable.box('');
                 return input;
             }),
             extended[extended.length - 1]
@@ -44,7 +44,7 @@ export default function handlerSourceSelect(config, apiSources) {
             searchResultAttr
         );
 
-        extended[0].handler(store.source.params, extended[0], saveParamList(store.source));
+        extended[0].handler(store.source.params, extended[0], saveParamList(store));
     }, true);
 
     document.querySelector(dataSourceAttr)
@@ -53,19 +53,19 @@ export default function handlerSourceSelect(config, apiSources) {
     document.querySelector(containerAttr).addEventListener('change', event => {
         const input = store.source.inputs[event.target.dataset[inputDataset]];
 
-        if (input !== undefined) {
+        if (input !== undefined && input !== null) {
             input.value.set(event.target.value);
-            const index = extended.findIndex(e => e.id === input);
-
-            ({ newParams: store.source.params, newParamList: store.source.paramList } =
-                saveParam(index, event.target.value, extended, store.source.params, store.source.paramList));
+            const index = extended.findIndex(e => e.id === input.id);
 
             extended[index]
                 .handler(
                     store.source.params,
                     extended[index + 1],
-                    saveParamList(store.source)
+                    saveParamList(store)
                 );
+
+            ({ newParams: store.source.params, newParamList: store.source.paramList } =
+                saveParam(index, event.target.value, extended, store.source.params, store.source.paramList));
         }
     });
 }

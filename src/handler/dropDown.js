@@ -2,21 +2,18 @@
  * Function that enables custom menu drop-down list
  */
 export default function dropDown() {
-    const testBox = document.querySelectorAll('[class^="dropdown"]');
+    document.querySelectorAll('[data-select--container]').forEach(container => {
+        container.addEventListener('click', event => {
+            const dropdown = event.target.parentNode.getElementsByTagName('ul');
+            if (dropdown.length > 0) {
+                dropdown[0].classList.toggle('notVis');
+            }
 
-    document.querySelector('.item').addEventListener('click', event => {
-        const dropdown = Object.keys(testBox)
-            .map(index => testBox[index])
-            .find(elem => event.target.parentNode === elem.parentNode);
-
-        if (dropdown !== undefined) {
-            dropdown.classList.toggle('visible');
-            dropdown.classList.toggle('notVis');
-        }
-
-        if (event.target.tagName === 'LI') {
-            const input = event.target.parentNode.parentNode.querySelector('input');
-            input.value = event.target.innerHTML;
-        }
+            if (event.target.nodeName === 'LI') {
+                const input = event.target.parentNode.parentNode.parentNode.querySelector('input');
+                input.value = event.target.innerHTML;
+                event.target.parentNode.parentNode.classList.toggle('notVis');
+            }
+        });
     });
 }
