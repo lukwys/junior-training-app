@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/reset.scss';
-import './css/global.scss';
+import './css/global.scss'; // TODO: Fix overriding .visible display: block by .dropdown display: none
 
 import source from './features/modules/source';
 import handler from './handler';
@@ -23,8 +23,8 @@ function bootstrap() {
     // console.log('~ Init select');
     // source.bootstrap();
     //
-    // console.log('~ Init drop-down menu');
-    // handler.dropDown();
+    console.log('~ Init drop-down menu');
+    handler.dropDown();
 }
 
 console.log('~ Bootstrapping App');
