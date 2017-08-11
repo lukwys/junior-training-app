@@ -176,12 +176,16 @@ body {
   }
 
   li:hover {
-  color: #A9A9A9;
-  background-color: $pas-blue;
+    color: #A9A9A9;
+    background-color: $pas-blue;
   }
 
 }
 
 .notVis {
   display: none;
+}
+
+ul.dropdown-season{
+  border-bottom: 1px solid gray;
 }

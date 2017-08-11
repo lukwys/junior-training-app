@@ -2,7 +2,7 @@
  * Function that enables custom menu drop-down list
  */
 export default function dropDown() {
-    document.querySelectorAll('[data-select--container]').forEach(container => {
+    document.querySelectorAll('div.container').forEach(container => {
         container.addEventListener('click', event => {
             const dropdown = event.target.parentNode.getElementsByTagName('ul');
             if (dropdown.length > 0) {
