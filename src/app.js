@@ -20,11 +20,11 @@ function bootstrap() {
 
     ReactDOM.render(<App />, appDock);
 
-    console.log('~ Init select');
-    source.bootstrap();
-
-    console.log('~ Init drop-down menu');
-    handler.dropDown();
+    // console.log('~ Init select');
+    // source.bootstrap();
+    //
+    // console.log('~ Init drop-down menu');
+    // handler.dropDown();
 }
 
 console.log('~ Bootstrapping App');
