@@ -2,22 +2,22 @@ import saveParam from '../../../../../src/features/modules/source/handler/savePa
 
 describe('f/m/source/handler/saveParam', () => {
     const extended = [
-        {id : 'testID1'},
-        {id : 'testID2'}
+        { id: 'testID1' },
+        { id: 'testID2' }
     ];
     const params = {};
     const paramList = {
         'testID1': [
-            {id: 555, name: 'testValue1'},
+            { id: 555, name: 'testValue1' },
         ],
         'testID2': [
-            {id: 120, name: 'testValue2'},
+            { id: 120, name: 'testValue2' },
         ]
     };
 
     it('should return updated newParam and unchanged newParamList', () => {
         const value = 'testValue1';
-        let index = 0;
+        const index = 0;
 
         const result = saveParam(index, value, extended, params, paramList);
 
@@ -29,15 +29,15 @@ describe('f/m/source/handler/saveParam', () => {
         })
     })
 
-    it('should return updated newParam and unchanged newParamList2', () => {
+    it('should return updated newParam and unchanged newParamList', () => {
         const value = 'testValue2';
-        let index = 1;
-      
+        const index = 1;
+
         const result = saveParam(index, value, extended, params, paramList);
 
         expect(result).toEqual({
             newParams: {
-               testID2: 120
+                testID2: 120
             },
             newParamList: paramList,
         })
