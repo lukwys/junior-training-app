@@ -13,6 +13,7 @@ function bootstrap() {
 
     console.log('~ Init drop-down menu');
     handler.dropDown();
+    handler.lastItemList();
 }
 
 bootstrap();
