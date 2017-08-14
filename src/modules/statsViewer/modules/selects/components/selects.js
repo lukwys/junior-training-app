@@ -2,9 +2,9 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
 
-import Input from './inputComponent';
+import Input from './input';
 
-const SelectsComponent = observer(
+export const SelectsComponent = observer(
     class SelectsComponent extends React.Component {
         constructor(props) {
             super(props);
@@ -15,7 +15,6 @@ const SelectsComponent = observer(
                 }
             });
 
-            // Optimization
             this.props.state.selects.currentValues.observe(({ newValue: val, name: key }) => {
                 if (val !== undefined && val !== '') {
                     if (this.prevComp.prefix === undefined
@@ -32,13 +31,23 @@ const SelectsComponent = observer(
                         .forEach(e => {
                             this.props.state.selects.matchedValues.set(key, e.id);
                             this.prevComp.forKey = '';
-                            console.log(this.props.state.selects.possibleValues);
                         });
                 }
                 else {
                     this.prevComp.forKey = '';
                 }
             });
+
+            this.handler = this.handler.bind(this);
+        }
+
+        handler(event) {
+            const item = event.target.closest('.item');
+
+            if (item) {
+                console.log('TODO: Dropdown handler', item.querySelector('ul'));
+                // TODO: Dropdown handler
+            }
         }
 
         render() {
@@ -64,12 +73,10 @@ const SelectsComponent = observer(
             });
 
             return (
-                <div className="container" data-select--container>
+                <div className="container" onClick={this.handler}>
                     {newInputs}
                 </div>
             );
         }
     }
 );
-
-export default SelectsComponent;

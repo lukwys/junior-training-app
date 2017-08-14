@@ -1,8 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import './css/source.scss';
+import '../css/source.scss';
 
-const SourceComponent = observer(
+export const SourceComponent = observer(
     class SourceComponent extends React.Component {
         constructor(props) {
             super(props);
@@ -22,9 +22,8 @@ const SourceComponent = observer(
             return (
                 <div className="container">
                     <div className="con-sel">
-                        <select onChange={this.handler} data-select--data-source>
-                            <option value="0">Consectetur</option>
-                            <option value="1">Accusamus</option>
+                        <select onChange={this.handler}>
+                            {this.props.apiList.map((e, i) => <option value={i} key={i}>{e}</option>)}
                         </select>
                         <div className="arrow">&#9662;</div>
                     </div>
@@ -33,5 +32,3 @@ const SourceComponent = observer(
         }
     }
 );
-
-export default SourceComponent;

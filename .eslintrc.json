@@ -19,6 +19,9 @@
       "error",
       4
     ],
+    "import/prefer-default-export": "off",
+    "no-plusplus": "off",
+    "no-mixed-operators": "off",
     "class-methods-use-this": "off",
     "no-unused-vars": "off",
     "linebreak-style": [
