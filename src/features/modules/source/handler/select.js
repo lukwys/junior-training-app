@@ -1,6 +1,7 @@
 import api from '../api';
 import attach from '../attach';
 import components from '../components';
+import selectModule from '../../select';
 import genInputs from './genInputs';
 import saveParam from './saveParam';
 import saveParamList from './saveParamList';
@@ -17,8 +18,8 @@ export default function handlerSourceSelect(config, apiSources) {
 
     let extended = [{
         outAttr: searchResultAttr,
-        attach: attach.searchResult,
-        components: components.searchResult,
+        attach: selectModule.attach.searchResult,
+        components: selectModule.components.searchResult,
         template: config.template.results
     }];
 
@@ -57,15 +58,15 @@ export default function handlerSourceSelect(config, apiSources) {
             input.value.set(event.target.value);
             const index = extended.findIndex(e => e.id === input.id);
 
+            ({ newParams: store.source.params, newParamList: store.source.paramList } =
+                saveParam(index, event.target.value, extended, store.source.params, store.source.paramList));
+
             extended[index]
                 .handler(
                     store.source.params,
                     extended[index + 1],
                     saveParamList(store)
                 );
-
-            ({ newParams: store.source.params, newParamList: store.source.paramList } =
-                saveParam(index, event.target.value, extended, store.source.params, store.source.paramList));
         }
     });
 }
