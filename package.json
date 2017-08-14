@@ -5,12 +5,12 @@
   "private": true,
   "homepage": "https://github.com/benedyktdryl/junior-training-app",
   "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack -p",
-    "test": "jest",
-    "lint": "eslint --fix src",
-    "precommit": "lint-staged",
-    "prepush": "lint-staged && npm test"
+    "start": "node node_modules/webpack/bin/webpack.js --watch",
+    "build": "node node_modules/webpack/bin/webpack.js -p",
+    "test": "node node_modules/jest/bin/jest.js",
+    "lint": "node node_modules/eslint/bin/eslint.js --fix src",
+    "precommit": "node node_modules/lint-staged/index.js",
+    "prepush": "node node_modules/lint-staged/index.js && npm test"
   },
   "lint-staged": {
     "*.js": [
