@@ -4,16 +4,21 @@
  * @param {string} url api url
  */
 import fetchRequest from './fetchRequest';
+import { store } from '../../../../../../store';
 
 export default function apiSrc0SearchResult(token, url) {
     const parser = i => {
+        const teamName = store.source.params.team.name;
         let goalFor = 0;
         let goalAgainst = 0;
         let points = 0;
+        let won = 0;
+        let lose = 0;
+        let drawn = 0;
         let homeTeam = i.result.goalsHomeTeam;
         let awayTeam = i.result.goalsAwayTeam;
 
-        if (i.homeTeamName !== 'Manchester United FC') {
+        if (i.homeTeamName !== teamName) {
             homeTeam = i.result.goalsAwayTeam;
             awayTeam = i.result.goalsHomeTeam;
         }
@@ -22,15 +27,18 @@ export default function apiSrc0SearchResult(token, url) {
 
         if (homeTeam > awayTeam) {
             points += 3;
+            won += 1;
         }
         else if (goalFor === awayTeam) {
             points += 1;
+            drawn += 1;
         }
         else {
             points += 0;
+            lose += 1;
         }
 
-        return { goalFor, goalAgainst, points };
+        return { goalFor, goalAgainst, points, won, drawn, lose };
     };
 
     return params =>
@@ -40,15 +48,18 @@ export default function apiSrc0SearchResult(token, url) {
                 accum.goalFor += curr.goalFor;
                 accum.goalAgainst += curr.goalAgainst;
                 accum.points += curr.points;
+                accum.won += curr.won;
+                accum.drawn += curr.drawn;
+                accum.lose += curr.lose;
                 return accum;
             }, {
-                played: 'todo',
+                played: 0,
                 points: 0,
-                won: 'todo',
-                drawn: 'todo',
-                lost: 'todo',
+                won: 0,
+                drawn: 0,
+                lose: 0,
                 goalFor: 0,
                 goalAgainst: 0
-            }) // TODO: Parser (include all stats)
+            })
         );
 }

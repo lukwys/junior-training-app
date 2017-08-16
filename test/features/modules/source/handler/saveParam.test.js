@@ -23,7 +23,10 @@ describe('f/m/source/handler/saveParam', () => {
 
         expect(result).toEqual({
             newParams: {
-                testID1: 555
+                testID1: {
+                    id: 555,
+                    name: 'testValue1'
+                }
             },
             newParamList: paramList,
         })
@@ -37,7 +40,10 @@ describe('f/m/source/handler/saveParam', () => {
 
         expect(result).toEqual({
             newParams: {
-                testID2: 120
+                testID2: {
+                    id: 120,
+                    name: 'testValue2'
+                }
             },
             newParamList: paramList,
         })

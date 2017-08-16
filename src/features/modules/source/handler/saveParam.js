@@ -7,7 +7,7 @@ export default function saveParam(index, value, extended, params, paramList) {
     const elem = newParamList[elementId].find(e => e.name === value);
 
     if (elem !== undefined) {
-        newParams[elementId] = elem.id;
+        newParams[elementId] = elem;
 
         extended
             .slice(index + 1, extended.length - 1)
