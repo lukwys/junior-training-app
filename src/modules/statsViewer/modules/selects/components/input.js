@@ -17,9 +17,19 @@ const InputComponent = observer(
         }
 
         render() {
+            const attributes = {};
+            if (this.props.list.length === 0) {
+                attributes.value = '';
+                attributes.disabled = true;
+            }
+            else if (this.savedList !== this.props.list) {
+                attributes.value = '';
+                this.savedList = this.props.list;
+            }
+
             return (
-                <div className="item">
-                    <input placeholder={this.props.name} onChange={this.handler} disabled={this.props.list.size === 0}/>
+                <div className="item" data-input={this.props.name}>
+                    <input placeholder={this.props.name} onChange={this.handler} {...attributes}/>
 
                     <InputDataList name={this.props.name} list={this.props.list} comp={this.props.comp} />
                     <div className="arrow">&#9662;</div>

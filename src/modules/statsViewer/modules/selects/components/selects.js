@@ -13,6 +13,16 @@ export const SelectsComponent = observer(
                 if (arr !== undefined && this.lists[key] !== undefined) {
                     this.lists[key].replace(arr);
                 }
+
+                this.props.state.selects.currentOrder.slice(
+                    this.props.state.selects.currentOrder.findIndex(e => e === key),
+                    this.props.state.selects.currentOrder.length)
+                    .forEach(e => {
+                        if (this.lists[e] !== undefined) {
+                            this.lists[e].replace([]);
+                            this.props.state.selects.currentValues.set(e, '');
+                        }
+                    });
             });
 
             this.props.state.selects.currentValues.observe(({ newValue: val, name: key }) => {
@@ -23,9 +33,10 @@ export const SelectsComponent = observer(
                         this.prevComp.forKey = key;
                         this.prevComp.matches = [...this.lists[key]];
                     }
+
                     this.prevComp.prefix = val;
                     this.prevComp.matches = this.prevComp.matches.filter(e => e.name.startsWith(this.prevComp.prefix));
-                    console.log(this.prevComp.matches.map(e => e.name));
+
                     this.prevComp.matches
                         .filter(e => e.name === val)
                         .forEach(e => {
@@ -38,6 +49,19 @@ export const SelectsComponent = observer(
                 }
             });
 
+            document.addEventListener('click', event => {
+                if (this.expendedDropdown !== undefined) {
+                    this.expendedDropdown.style.display = 'none';
+                }
+
+                this.expendedDropdown = this.expendingDropdown;
+
+                if (this.expendedDropdown !== undefined) {
+                    delete this.expendingDropdown;
+                    this.expendedDropdown.style.display = 'block';
+                }
+            });
+
             this.handler = this.handler.bind(this);
         }
 
@@ -45,8 +69,17 @@ export const SelectsComponent = observer(
             const item = event.target.closest('.item');
 
             if (item) {
-                console.log('TODO: Dropdown handler', item.querySelector('ul'));
-                // TODO: Dropdown handler
+                const dropdown = item.getElementsByTagName('ul');
+
+                if (event.target.nodeName === 'LI') {
+                    const input = item.querySelector('input');
+                    input.value = event.target.innerHTML;
+
+                    this.props.state.selects.currentValues.set(item.dataset.input, input.value);
+                }
+                else if (dropdown.length > 0 && dropdown[0].children.length > 0) {
+                    this.expendingDropdown = dropdown[0];
+                }
             }
         }
 

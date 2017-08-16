@@ -2,21 +2,16 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { observable, autorun } from 'mobx';
 import '../css/statsViewer.scss';
+import config from '../config';
 
 import { Results, Selects, Source } from '../modules';
-
-// TODO: Replace mock-up with order from config
-const order = [
-    ['season', 'league', 'team'],
-    ['country', 'league', 'season', 'team']
-];
 
 export const StatsViewerComponent = observer(
     class StatsViewerComponent extends React.Component {
         constructor(props) {
             super(props);
 
-            this.state = {
+            this.localState = {
                 source: observable({
                     currentApi: 0
                 }),
@@ -31,35 +26,34 @@ export const StatsViewerComponent = observer(
                 })
             };
 
-            this.state.selects.matchedValues.observe(({ newValue: id, name: key }) => {
-                const index = this.state.selects.currentOrder.findIndex(e => e === key);
+            this.localState.selects.matchedValues.observe(({ newValue: id, name: key }) => {
+                const index = this.localState.selects.currentOrder.findIndex(e => e === key);
 
-                if (index === this.state.selects.currentOrder.length - 1) {
-                    this.fetcher(this.state.source.currentApi, 'search-result');
+                if (index === this.localState.selects.currentOrder.length - 1) {
+                    this.fetcher(this.localState.source.currentApi, 'search-result');
                 }
                 else {
-                    this.fetcher(this.state.source.currentApi, this.state.selects.currentOrder[index + 1]);
+                    this.fetcher(this.localState.source.currentApi, this.localState.selects.currentOrder[index + 1]);
                 }
             });
 
-            this.state.selects.currentOrder.observe(() => {
-                this.state.selects.matchedValues.clear();
-                this.state.selects.possibleValues.clear();
-                this.state.results.table = {};
+            this.localState.selects.currentOrder.observe(() => {
+                this.localState.selects.matchedValues.clear();
+                this.localState.selects.possibleValues.clear();
+                this.localState.results.table = {};
 
-                this.fetcher(this.state.source.currentApi, this.state.selects.currentOrder[0]);
+                this.fetcher(this.localState.source.currentApi, this.localState.selects.currentOrder[0]);
             });
 
             autorun(() => {
-                this.state.selects.currentOrder.replace(order[this.state.source.currentApi]);
+                this.localState.selects.currentOrder.replace(config.order[this.localState.source.currentApi]);
             });
         }
 
         // TODO: Replace mock-up with real API
         fetcher(api, type) {
-            console.log('type', type);
             if (type === 'search-result') {
-                this.state.results.table = {
+                this.localState.results.table = {
                     played: 0,
                     points: 0,
                     won: 0,
@@ -84,8 +78,8 @@ export const StatsViewerComponent = observer(
                     list[i] = [list[index], list[index] = list[i]][0];
                 }
 
-                if (this.state.selects.currentOrder.find(e => e === type)) {
-                    this.state.selects.possibleValues.set(type,
+                if (this.localState.selects.currentOrder.find(e => e === type)) {
+                    this.localState.selects.possibleValues.set(type,
                         list.splice(0, Math.max(3, Math.random() * list.length / 2)));
                 }
             }
@@ -94,9 +88,9 @@ export const StatsViewerComponent = observer(
         render() {
             return (
                 <div className="stats-viewer">
-                    <Source state={this.state.source} apiList={['Consectetur', 'Accusamus']}/>
-                    <Selects state={this.state}/>
-                    <Results state={this.state.results}/>
+                    <Source state={this.localState.source} apiList={config.sources}/>
+                    <Selects state={this.localState}/>
+                    <Results state={this.localState.results}/>
                 </div>
             );
         }

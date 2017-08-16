@@ -10,15 +10,15 @@ export const ResultsComponent = observer(
                     <table>
                         <thead>
                         <tr>
-                            {Object.keys(this.props.state.table).map(key =>
-                                <th>{key}</th>
+                            {Object.keys(this.props.state.table).map((key, index) =>
+                                <th key={index}>{key}</th>
                             )}
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            {Object.keys(this.props.state.table).map(key =>
-                                <td>{this.props.state.table[key]}</td>
+                            {Object.keys(this.props.state.table).map((key, index) =>
+                                <td key={index}>{this.props.state.table[key]}</td>
                             )}
                         </tr>
                         </tbody>
