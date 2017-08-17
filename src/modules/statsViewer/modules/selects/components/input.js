@@ -2,9 +2,9 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import '../css/input.scss';
 
-import InputDataList from './inputDataList';
+import { InputDataListComponent as InputDataList } from './inputDataList';
 
-const InputComponent = observer(
+export const InputComponent = observer(
     class InputComponent extends React.Component {
         constructor(props) {
             super(props);
@@ -38,5 +38,3 @@ const InputComponent = observer(
         }
     }
 );
-
-export default InputComponent;

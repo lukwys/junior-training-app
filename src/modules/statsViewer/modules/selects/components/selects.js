@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
 
-import Input from './input';
+import { InputComponent as Input } from './input';
 
 export const SelectsComponent = observer(
     class SelectsComponent extends React.Component {
