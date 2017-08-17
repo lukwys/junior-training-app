@@ -14,7 +14,7 @@ export default function apiSrc0SearchResult(token, url) {
         let points = 0;
         let won = 0;
         let lose = 0;
-        let drawn = 0;
+        let draw = 0;
         let homeTeam = i.result.goalsHomeTeam;
         let awayTeam = i.result.goalsAwayTeam;
 
@@ -31,14 +31,14 @@ export default function apiSrc0SearchResult(token, url) {
         }
         else if (goalFor === awayTeam) {
             points += 1;
-            drawn += 1;
+            draw += 1;
         }
         else {
             points += 0;
             lose += 1;
         }
 
-        return { goalFor, goalAgainst, points, won, drawn, lose };
+        return { goalFor, goalAgainst, points, won, draw, lose };
     };
 
     return params =>
@@ -49,14 +49,14 @@ export default function apiSrc0SearchResult(token, url) {
                 accum.goalAgainst += curr.goalAgainst;
                 accum.points += curr.points;
                 accum.won += curr.won;
-                accum.drawn += curr.drawn;
+                accum.draw += curr.draw;
                 accum.lose += curr.lose;
                 return accum;
             }, {
                 played: 0,
                 points: 0,
                 won: 0,
-                drawn: 0,
+                draw: 0,
                 lose: 0,
                 goalFor: 0,
                 goalAgainst: 0
