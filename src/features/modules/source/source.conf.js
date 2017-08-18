@@ -21,10 +21,10 @@ export default {
     },
     template: {
         input: '<div class="item">' +
-        '<input placeholder="{label}" {inAttr} disabled/>' +
-        '<ul class="dropdown-{id} dropdowns notVis" {outAttr}></ul>' +
-        '<div class="arrow" data-select--list="dropdown-{id}">&#9662;</div>' +
-        '</div>',
+            '<input placeholder="{label}" {inAttr} disabled/>' +
+            '<ul class="dropdown-{id} dropdowns notVis" {outAttr}></ul>' +
+            '<div class="arrow" data-select--list="dropdown-{id}">&#9662;</div>' +
+            '</div>',
 
         li: '<li data-value="{key}">{key}</li>',
         option: '<option data-value="{key}">{value}</option>',

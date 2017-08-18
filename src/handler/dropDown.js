@@ -1,23 +1,27 @@
-/**
- * Function that enables custom menu drop-down list
- */
-export default function dropDown() {
-    let lastClicked;
-    document.addEventListener('click', event => {
-        lastClicked = event.target;
-        const dropdown = event.target.parentNode.getElementsByTagName('ul');
+export default function dropdown() {
+    document.body.addEventListener('click', event => {
+        const item = event.target.closest('.item');
+        console.log('pre ~ event.target', event.target);
 
+        if (item) {
+            const ul = item.getElementsByTagName('ul');
 
-        if (event.target.nodeName === 'LI') {
-            const input = event.target.parentNode.parentNode.parentNode.querySelector('input');
-            input.value = event.target.innerHTML;
-            event.target.parentNode.parentNode.classList.toggle('notVis');
+            console.log('mid ~ event.target', event.target);
+            if (event.target.parentNode.getElementsByTagName('ul li')) {
+                ul[0].classList.toggle('notVis');
+
+                const input = item.querySelector('input');
+                input.value = event.target.innerHTML;
+
+                input.dispatchEvent(new InputEvent('change', {
+                    'view': window,
+                    'bubbles': true,
+                    'cancelable': true
+                }));
+            }
         }
-        else if (lastClicked) {
-            dropdown[0].classList.toggle('notVis');
-            console.log(lastClicked);
-            lastClicked = undefined;
-            console.log(lastClicked);
+        else {
+            document.querySelectorAll('.dropdowns:not(.notVis)').forEach(x => x.classList.add('notVis'));
         }
     });
 }
