@@ -1,5 +1,5 @@
-import dropdown from './dropdown';
+import dropDown from './dropDown';
 
 export default {
-    dropdown
+    dropDown
 };

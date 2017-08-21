@@ -12,7 +12,7 @@ function bootstrap() {
     source.bootstrap();
 
     console.log('~ Init drop-down menu');
-    handler.dropdown();
+    handler.dropDown();
 }
 
 bootstrap();

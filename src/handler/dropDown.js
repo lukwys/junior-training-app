@@ -1,4 +1,4 @@
-export default function dropdown() {
+export default function dropDown() {
     document.body.addEventListener('click', event => {
         const item = event.target.closest('.item');
         console.log('pre ~ event.target', event.target);
